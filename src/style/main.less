@@ -1,0 +1,61 @@
+@import 'variable.less';
+@import 'reset.less';
+
+@font-face {
+  font-family: '上首呆呆体';
+  src: url('../assets/上首呆呆体.ttf');
+}
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: '上首呆呆体';
+}
+body {
+  background: var(--body-bg-color);
+}
+
+.icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
+ul {
+  margin: 0;
+}
+ul li {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+/*清除浮动代码*/
+.clear-float:after {
+  display: block;
+  clear: both;
+  content: "";
+  visibility: hidden;
+  height: 0
+}
+
+.clear-float {
+  zoom: 1
+}
+
+::-webkit-scrollbar {
+  width: 3px;
+  height: 1px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--ant-primary-color);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-track {
+  background: #5f5f60;
+  border-radius: 3px;
+  -webkit-box-shadow: inset 0 0 1px rgba(0, 0, 0, 0);
+}

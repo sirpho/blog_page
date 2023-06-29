@@ -1,0 +1,72 @@
+.markdown-page {
+  display: flex;
+
+  .markdown-wrapper {
+    flex: 1;
+    height: 100vh;
+
+    .article-title {
+      height: 64px;
+
+      .arco-input-wrapper {
+        padding-left: 40px;
+        padding-right: 40px;
+        background: #FFFFFF;
+        border-bottom: 1px solid #dddddd;
+
+        .arco-input {
+          font-size: 38px;
+          line-height: 1;
+          padding-top: 12px;
+          padding-bottom: 12px;
+        }
+      }
+    }
+
+    .v-md-editor {
+      height: calc(100vh - 64px);
+    }
+  }
+
+  .subsidiary-wrapper {
+    width: 400px;
+    background: #FFFFFF;
+    padding: var(--common-space);
+    border-left: 1px solid #DDDDDD;
+    box-sizing: border-box;
+    position: relative;
+    font-size: 18px;
+
+    .arco-form-item-label-col > .arco-form-item-label, .arco-input-wrapper .arco-input, .arco-select-view-multiple, .arco-radio {
+      font-size: 18px;
+    }
+
+    .arco-tag {
+      font-size: 16px;
+    }
+
+    .button-wrapper {
+      position: absolute;
+      left: var(--common-space);
+      right: var(--common-space);
+      bottom: 50px;
+      display: flex;
+      justify-content: space-between;
+
+      .arco-btn {
+        font-size: 18px;
+        margin: 2%;
+      }
+
+      .arco-btn-status-normal {
+        color: #FFFFFF;
+        background: var(--blog-primary-color);
+      }
+
+      .blank {
+        width: 2em;
+        display: inline-block;
+      }
+    }
+  }
+}

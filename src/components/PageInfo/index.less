@@ -1,0 +1,62 @@
+.page-info {
+  margin-bottom: var(--common-space);
+  padding-top: var(--common-space);
+
+  .avatar-wrapper {
+    text-align: center;
+  }
+
+  .site-describe {
+    margin-top: 15px;
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: 22px;
+  }
+
+  .site-state {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 25px;
+
+    .site-state-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+
+      .site-state-item-count {
+        font-size: 20px;
+        font-weight: 16;
+      }
+
+      .site-state-item-name {
+        font-size: 16px;
+        font-weight: 15;
+      }
+    }
+  }
+
+  .contact {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 20px;
+
+    a.contact-item {
+      color: var(--color-text-2);
+      font-size: 16px;
+      text-align: left;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      text-decoration: none;
+      background-color: transparent;
+
+      span {
+        margin-left: 7px;
+      }
+    }
+  }
+}
