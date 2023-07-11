@@ -1,11 +1,13 @@
 import { defineComponent, onMounted, reactive, watch } from "vue";
 import ArticleSummary from "./components/ArticleSummary";
-import { browseArticle, queryList } from "@/services/article";
+// @ts-ignore
+import PageLoading from "@/components/PageLoading/index.vue";
+import { queryList } from "@/services/article";
 import "./index.less";
 import { useRoute } from "vue-router";
 
 export default defineComponent({
-  components: { ArticleSummary },
+  components: { ArticleSummary, PageLoading },
   setup() {
     const route = useRoute();
 
@@ -87,6 +89,9 @@ export default defineComponent({
               />
             </div>
           ) : null}
+          {
+            state.loading && <div class="loading-wrapper"><PageLoading /></div>
+          }
           {!state.loading && state.list.length <= 0 ? <a-empty /> : null}
         </main>
       );

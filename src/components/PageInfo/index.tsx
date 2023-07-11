@@ -23,7 +23,7 @@ export default defineComponent({
 
     onMounted(async () => {
       const res = await getSiteInfo()
-      if(res.code === 200) {
+      if(res.code === 200 && res.data) {
         state.motto = res.data.motto
         state.github = res.data.github
         state.avatar = res.data.avatar

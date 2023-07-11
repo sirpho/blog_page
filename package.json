@@ -31,6 +31,7 @@
     "@types/node": "^18.16.17",
     "@types/prismjs": "^1.26.0",
     "@types/qs": "^6.9.7",
+    "@types/vue": "^2.0.0",
     "@vitejs/plugin-vue": "^4.2.3",
     "@vitejs/plugin-vue-jsx": "^3.0.1",
     "@vue/eslint-config-prettier": "^7.1.0",
