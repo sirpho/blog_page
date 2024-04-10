@@ -33,7 +33,7 @@ export function removeArticle(data: QueryParam): Promise<any> {
  */
 export function queryCategoryList(params?: QueryParam): Promise<any> {
   return request({
-    url: '/classification/category/list',
+    url: '/enum/query/ARTICLE_CATEGORY',
     method: 'get',
     params: params || {}
   })
@@ -45,7 +45,7 @@ export function queryCategoryList(params?: QueryParam): Promise<any> {
  */
 export function queryTagList(params?: QueryParam): Promise<any> {
   return request({
-    url: '/classification/tag/list',
+    url: '/tag/article/list',
     method: 'get',
     params: params || {}
   })
