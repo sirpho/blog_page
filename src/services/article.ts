@@ -4,6 +4,16 @@ type QueryParam = {
   [key: string]: any
 }
 
+/**
+ * 统计
+ */
+export function getStatistics(): Promise<any> {
+  return request({
+    url: `/article/statistics`,
+    method: 'get',
+  })
+}
+
 export function queryList(params: QueryParam): Promise<any> {
   return request({
     url: '/article/list',

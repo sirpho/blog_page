@@ -26,7 +26,8 @@ import {
   Image,
   Switch,
   Affix,
-  Table
+  Table,
+  Skeleton
 } from "@arco-design/web-vue";
 
 const app = createApp(App);
@@ -55,6 +56,7 @@ app.use(Link);
 app.use(Image);
 app.use(Affix);
 app.use(Switch);
+app.use(Skeleton);
 
 // markdown组件
 import VueMarkdownEditor from "@kangc/v-md-editor";

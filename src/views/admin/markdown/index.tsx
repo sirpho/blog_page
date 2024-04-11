@@ -15,7 +15,7 @@ export default defineComponent({
     const route = useRoute()
     const storeUser: any = useStoreUser()
     const [tagList, categoriesList] = useDict(['TAGS', 'CATEGORIES'])
-    const resetRelatedDict = resetDict(['TAGS', 'CATEGORIES'])
+    const resetRelatedDict = resetDict(['TAGS', 'CATEGORIES', 'STATISTICS'])
     const state = reactive({
       article: {
         createTime: '',
@@ -31,7 +31,7 @@ export default defineComponent({
         creationType: '原创',
         source: '',
         tags: [],
-        categories: []
+        category: ''
       } as articleType,
       submitLoading: false,
       removeLoading: false
@@ -60,8 +60,8 @@ export default defineComponent({
             author: storeUser.user?.name,
             creationType: '原创',
             source: '',
+            category: '',
             tags: [],
-            categories: []
           }
         }
       },
@@ -86,7 +86,7 @@ export default defineComponent({
         Message.warning('请填写文章作者')
         return
       }
-      if (!state.article.categories || state.article.categories.length <= 0) {
+      if (!state.article.category) {
         Message.warning('请填写文章分类')
         return
       }
@@ -174,12 +174,10 @@ export default defineComponent({
                   <a-input v-model={state.article.source} placeholder="原文链接" />
                 </a-form-item>
               )}
-              <a-form-item field="categories" label="分类">
+              <a-form-item field="category" label="分类">
                 <a-select
-                  v-model={state.article.categories}
+                  v-model={state.article.category}
                   placeholder="分类"
-                  multiple
-                  allow-create
                 >
                   {categoriesList.value?.map((item: any) => (
                     <a-option value={item.name} key={item.value} label={item.name} />

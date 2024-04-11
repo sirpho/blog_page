@@ -36,7 +36,7 @@ export function queryList(params: QueryParam): Promise<any> {
 export function deleteFile(params: QueryParam): Promise<any> {
   return request({
     url: '/file/delete',
-    method: 'delete',
+    method: 'get',
     params
   })
 }

@@ -1,5 +1,5 @@
 // // 查询字典数据详细
-import { queryCategoryList, queryTagList } from '@/services/article'
+import { getStatistics, queryCategoryList, queryTagList } from "@/services/article";
 
 export function getDictOptions(dictCode: string) {
   return new Promise((resolve, reject) => {
@@ -23,6 +23,12 @@ export function getDictOptions(dictCode: string) {
         nameKey = 'name'
         valueKey = 'id'
         operation = queryCategoryList
+        break
+      // 文章类别统计
+      case 'STATISTICS':
+        nameKey = 'category'
+        valueKey = 'category'
+        operation = getStatistics
         break
     }
     if (!operation) {

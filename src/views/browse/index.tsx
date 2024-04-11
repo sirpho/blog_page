@@ -3,7 +3,8 @@ import { useRoute, useRouter } from 'vue-router'
 import { browseArticle } from '@/services/article'
 import ArticleHeader from '@/components/ArticleHeader'
 import ArticleTags from '@/components/ArticleTags'
-import { useStoreUser } from "@/stores/modules/user";
+import { useStoreUser } from '@/stores/modules/user'
+import './index.less'
 
 export default defineComponent({
   components: { ArticleHeader, ArticleTags },
@@ -26,13 +27,17 @@ export default defineComponent({
         creationType: '',
         source: '',
         tags: [],
-        categories: []
-      } as articleType
+        category: ""
+      } as articleType,
+      loading: true
     })
 
     onMounted(async () => {
       const { id } = route.params
-      const res = await browseArticle(id as string)
+      state.loading = true
+      const res = await browseArticle(id as string).finally(() => {
+        state.loading = false
+      })
       if (res.code === 200) {
         state.article = res.data as articleType
       }
@@ -42,15 +47,25 @@ export default defineComponent({
      * 编辑该文章
      */
     const goMarkdown = (params: any) => {
-        router.push(`/markdown/${params.id}`)
+      router.push(`/markdown/${params.id}`)
     }
 
     return () => {
       return (
         <a-card hoverable class="browse-page">
-          <ArticleHeader {...state.article} showEdit onHandleEdit={goMarkdown} />
-          <v-md-editor v-model={state.article.content} mode="preview" />
-          <ArticleTags tags={state.article.tags}/>
+          {
+            state.loading ? (
+              <a-skeleton animation>
+                <a-skeleton-line rows={5} />
+              </a-skeleton>
+            ) : (
+              <>
+                <ArticleHeader {...{...state.article, content: undefined}} showEdit onHandleEdit={goMarkdown} />
+                <v-md-editor v-model={state.article.content} mode="preview" />
+                <ArticleTags tags={state.article.tags} />
+              </>
+            )
+          }
         </a-card>
       )
     }

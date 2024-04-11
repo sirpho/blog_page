@@ -10,6 +10,7 @@ import { AxiosCanceler } from './axios/axiosCancel'
 import { delayAsync } from '@sirpho/utils/delayAsync'
 import { Message } from '@arco-design/web-vue'
 import { useStoreUser } from "@/stores/modules/user";
+import { removeStorage } from "@/utils/storage";
 
 export interface CreateAxiosOptions extends AxiosRequestConfig {
   headers?: any
@@ -27,7 +28,7 @@ export interface GAxiosInstance extends Axios {
 
 let loadingInstance: any
 
-const { contentType, requestTimeout, successCode } = config
+const { contentType, requestTimeout, successCode, shortName } = config
 
 const axiosCanceler = new AxiosCanceler()
 
@@ -42,7 +43,10 @@ const handleCode = (code: number, msg: string) => {
       case 401:
         Message.error(msg || '登录失效')
         await delayAsync(1)
-        router.push({ path: '/login' })
+        removeStorage(`${shortName}_user`)
+        removeStorage(`${shortName}_token`)
+        await router.push("login")
+        window.location.reload()
         break
       case 403:
         router.push({ path: '/' })

@@ -7,10 +7,13 @@ import { Message } from '@arco-design/web-vue'
 import { download } from '@/services/common'
 import { useThrottleFn } from '@vueuse/core'
 import { useStoreUser } from '@/stores/modules/user'
-
+import { getStorage } from "@/utils/storage";
+import config from "/config/config";
+const { shortName } = config
 type TableRenderType = { record: TableData; column: TableColumnData; rowIndex: number }
 export default defineComponent({
   setup() {
+
     const user = useStoreUser()
     const state = reactive({
       pageSize: 10,
@@ -119,7 +122,9 @@ export default defineComponent({
       previewSRC: '',
       previewVisible: false,
       // 上传请求附加的头信息
-      headers: {} as any,
+      headers: {
+        token: getStorage({key: `${shortName}_token`})
+      } as any,
       // 上传请求附加的数据
       data: {
         keepName: 'N'

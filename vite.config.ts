@@ -12,6 +12,7 @@ import { join } from "node:path";
 // 获取arco样式路径
 // @ts-ignore
 function getArcoStylePath(name: string) {
+
   let path = `@arco-design/web-vue/es/${name}/style/index.js`;
   if(name === 'icon') {
     path = `@arco-design/web-vue/es/style/icon.less`

@@ -36,11 +36,6 @@ export default defineComponent({
     author: {
       type: String
     },
-    // 分类
-    categories: {
-      type: Array as PropType<string[]>,
-      default: () => []
-    },
     // 展示编辑
     showEdit: {
       type: Boolean,
@@ -80,17 +75,17 @@ export default defineComponent({
       return (
         <header class="post-header">
           <a class="post-title" onClick={handleClickArticle}>
-            {props.title}
+            {props.title || '--'}
           </a>
           <div class="post-meta">
             <div class="post-meta-item">
               <icon-font type="icon-shijian" />
-              <time>{dayjs(props.createTime).format('YYYY-MM-DD HH:mm')}</time>
+              <time>{props.createTime ? dayjs(props.createTime).format('YYYY-MM-DD HH:mm') : '--'}</time>
             </div>
             <a-divider direction="vertical" />
             <div class="post-meta-item" style={{cursor: 'pointer'}}  onClick={handleClickAuthor}>
-              <icon-font type="icon-zuozhe" />
-              <span>{props.author}</span>
+              <icon-font type="icon-xiezuo" />
+              <span>{props.author || '--'}</span>
             </div>
             <a-divider direction="vertical" />
             <div class="post-meta-item">

@@ -12,7 +12,7 @@ export default defineComponent({
   setup() {
     const storeDict: any = useStoreDict()
     const tagsCount = computed(() => storeDict.data['TAGS']?.length || 0)
-    const categoriesCount = computed(() => storeDict.data['CATEGORIES']?.length || 0)
+    const categoriesCount = computed(() => storeDict.data['STATISTICS']?.length || 0)
     const state = reactive({
       articlesCount: 0,
       motto: '',

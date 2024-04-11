@@ -31,8 +31,8 @@ declare interface articleType {
   author: string,
   creationType: string,
   source: string,
+  category: string,
   tags: string[],
-  categories: string[],
 }
 
 declare type RecordType = Record<string, any>;

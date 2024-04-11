@@ -5,7 +5,7 @@ import request from "@/utils/request";
  */
 export function getSiteInfo(): Promise<any> {
   return request({
-    url: `/site/info`,
+    url: `/site/blog/info`,
     method: 'get',
   })
 }

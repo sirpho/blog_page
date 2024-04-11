@@ -6,7 +6,7 @@ import { useRouter } from "vue-router";
 export default defineComponent({
   setup() {
     const router = useRouter()
-    const [categoriesList] = useDict(['CATEGORIES'])
+    const [categoriesList] = useDict(['STATISTICS'])
     /**
      * 相关文章列表
      */
