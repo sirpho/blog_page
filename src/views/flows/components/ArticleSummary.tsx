@@ -58,7 +58,7 @@ export default defineComponent({
         <a-card hoverable class="article-summary">
           <article>
             <ArticleHeader {...props} onHandleClickArticle={(id) => handleClickArticle(id)} />
-            <div class="post-content">
+            <div class="post-content" onClick={() => handleClickArticle(props.id)}>
               {props.summary}...
             </div>
             <ArticleTags tags={props.tags}/>
