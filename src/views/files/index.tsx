@@ -8,13 +8,11 @@ import { download } from '@/services/common'
 import { useThrottleFn } from '@vueuse/core'
 import { useStoreUser } from '@/stores/modules/user'
 import { getStorage } from "@/utils/storage";
-import config from "/config/config";
-const { shortName } = config
 type TableRenderType = { record: TableData; column: TableColumnData; rowIndex: number }
 export default defineComponent({
   setup() {
 
-    const user = useStoreUser()
+    const userStore = useStoreUser()
     const state = reactive({
       pageSize: 10,
       pageNum: 1,
@@ -88,7 +86,7 @@ export default defineComponent({
           title: '操作',
           dataIndex: 'option',
           align: 'center',
-          width: 250 + (user.token ? 50 : 0),
+          width: 250 + (userStore.user?.token ? 50 : 0),
           render: ({ record }: TableRenderType) => {
             return (
               <a-space>
@@ -96,7 +94,7 @@ export default defineComponent({
                 {!!navigator?.clipboard?.writeText && (
                   <a-button onClick={() => handleCopy(record)}>复制下载链接</a-button>
                 )}
-                {!!user.token && (
+                {!!userStore.user?.token && (
                   <a-popconfirm
                     disabled={state.loadingMap[record.id]}
                     content="是否删除源文件?"
@@ -123,7 +121,7 @@ export default defineComponent({
       previewVisible: false,
       // 上传请求附加的头信息
       headers: {
-        token: getStorage({key: `${shortName}_token`})
+        token: getStorage({key: `token`})
       } as any,
       // 上传请求附加的数据
       data: {
@@ -143,6 +141,7 @@ export default defineComponent({
      */
     const isImage = (record: any) => {
       return [
+        'webp',
         'awebp',
         'jpg',
         'jpeg',
@@ -292,7 +291,7 @@ export default defineComponent({
               }}
             />
           </div>
-          {!!user.token && (
+          {!!userStore.user?.token && (
             <div class="upload-wrapper">
               <a-upload
                 draggable

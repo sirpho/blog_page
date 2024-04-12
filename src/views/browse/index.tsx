@@ -3,7 +3,6 @@ import { useRoute, useRouter } from 'vue-router'
 import { browseArticle } from '@/services/article'
 import ArticleHeader from '@/components/ArticleHeader'
 import ArticleTags from '@/components/ArticleTags'
-import { useStoreUser } from '@/stores/modules/user'
 import './index.less'
 
 export default defineComponent({
@@ -11,7 +10,6 @@ export default defineComponent({
   setup() {
     const route = useRoute()
     const router = useRouter()
-    const useUser: any = useStoreUser()
     const state = reactive({
       article: {
         createTime: '',

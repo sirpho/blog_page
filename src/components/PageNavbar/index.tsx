@@ -4,15 +4,13 @@ import { Icon } from '@arco-design/web-vue'
 import { useRouter } from 'vue-router'
 import { useStoreUser } from "@/stores/modules/user";
 import { removeStorage } from "@/utils/storage";
-import config from "/config/config";
-const { shortName } = config
 
 const IconFont = Icon.addFromIconFontCn({ src: 'iconfont.js' })
 export default defineComponent({
   components: { IconFont },
   setup() {
     const router = useRouter()
-    const useUser:any = useStoreUser()
+    const userStore: any = useStoreUser()
     const keyword = ref('')
     /**
      * 跳转主页
@@ -24,8 +22,7 @@ export default defineComponent({
      * 跳转登录页
      */
     const goLogin = async () => {
-      removeStorage(`${shortName}_user`)
-      removeStorage(`${shortName}_token`)
+      removeStorage(`user`)
       await router.push('/login')
       window.location.reload()
     }
@@ -65,7 +62,7 @@ export default defineComponent({
                 主页
               </li>
               {
-                useUser.token ? [
+                userStore.user?.token ? [
                   <li key='write' class="nav-item" onClick={goMarkdown}>
                     <icon-font type="icon-svgwrite" />
                     创作

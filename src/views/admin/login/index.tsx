@@ -4,12 +4,10 @@ import {login} from "@/services/admin";
 import {useStoreUser} from "@/stores/modules/user";
 import { useRouter, useRoute } from "vue-router";
 import { setStorage } from "@/utils/storage";
-import config from "/config/config";
-const { shortName } = config
 
 export default defineComponent({
   setup() {
-    const useUser: any = useStoreUser()
+    const userStore: any = useStoreUser()
     const router = useRouter()
     const route = useRoute()
     const state = reactive({
@@ -27,15 +25,14 @@ export default defineComponent({
           state.loading = false
         })
         if(res.code === 200) {
-          useUser.setStoreUser(res.data)
-          useUser.setStoreToken(res.data.token)
+          userStore.setStoreUser(res.data)
           setStorage({
-            key: `${shortName}_user`,
+            key: `user`,
             value: res.data,
             expired: 60 * 1000 * 1000 * 3
           })
           setStorage({
-            key: `${shortName}_token`,
+            key: `token`,
             value: res.data.token,
             expired: 60 * 1000 * 1000 * 3
           })

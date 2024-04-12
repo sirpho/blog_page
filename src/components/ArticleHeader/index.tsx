@@ -46,7 +46,7 @@ export default defineComponent({
   components: { IconFont },
   setup(props, { emit }) {
 
-    const useUser:any = useStoreUser()
+    const userStore:any = useStoreUser()
 
     /**
      * 点击文章标题
@@ -93,7 +93,7 @@ export default defineComponent({
               <span>{props.wordCount}字</span>
             </div>
             {
-              (useUser.token && props.showEdit) && [
+              (userStore.user?.token && props.showEdit) && [
                 <a-divider direction="vertical" />,
                 <div onClick={onHandleEdit} class="post-meta-item admin-edit">
                 <icon-font type="icon-edit-role" />

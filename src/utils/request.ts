@@ -28,7 +28,7 @@ export interface GAxiosInstance extends Axios {
 
 let loadingInstance: any
 
-const { contentType, requestTimeout, successCode, shortName } = config
+const { contentType, requestTimeout, successCode } = config
 
 const axiosCanceler = new AxiosCanceler()
 
@@ -43,8 +43,7 @@ const handleCode = (code: number, msg: string) => {
       case 401:
         Message.error(msg || '登录失效')
         await delayAsync(1)
-        removeStorage(`${shortName}_user`)
-        removeStorage(`${shortName}_token`)
+        removeStorage(`user`)
         await router.push("login")
         window.location.reload()
         break
@@ -72,7 +71,7 @@ const instance: GAxiosInstance = axios.create({
  */
 instance.interceptors.request.use(
   (config: any) => {
-    const user = useStoreUser()
+    const userStore = useStoreUser()
 
     const {
       headers: { ignoreCancelToken }
@@ -94,8 +93,8 @@ instance.interceptors.request.use(
       config.baseURL = import.meta.env.VITE_BASE_URL
     }
 
-    if(user?.token) {
-      config.headers.token = user.token
+    if(userStore.user?.token) {
+      config.headers.token = userStore.user.token
     }
 
     if (

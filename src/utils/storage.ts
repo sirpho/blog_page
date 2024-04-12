@@ -22,7 +22,7 @@ export function getStorage({ key, type = 'local' }: { key: string, type?: string
   const result: any = storageValue ? Decrypt(storageValue) : ''
   if (result && isObject(result)) {
     if (result.expired) {
-      const expiredStatus = dayjs().diff(dayjs(result.time)) >= result.expired
+      const expiredStatus = dayjs(new Date()).format('YYYY-MM-DD HH:mm:ss') >= result.expired
       if (expiredStatus) {
         removeStorage(key, type)
         return ''

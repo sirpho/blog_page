@@ -61,10 +61,10 @@ const router = createRouter({
 const {routesBlackList} = config
 
 router.beforeEach(async (to, _, next) => {
-  const user: any = useStoreUser()
+  const userStore: any = useStoreUser()
   Message.clear();
-  const hasToken = !!user.token
-  if (hasToken) {
+  const logged = !!userStore.user
+  if (logged) {
     if (to.path === '/login') {
       next({ path: '/', replace: true })
     } else {
