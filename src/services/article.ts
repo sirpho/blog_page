@@ -14,6 +14,16 @@ export function getStatistics(): Promise<any> {
   })
 }
 
+/**
+ * 统计
+ */
+export function getTagStatistics(): Promise<any> {
+  return request({
+    url: `/tag/statistics`,
+    method: 'get',
+  })
+}
+
 export function queryList(params: QueryParam): Promise<any> {
   return request({
     url: '/article/list',

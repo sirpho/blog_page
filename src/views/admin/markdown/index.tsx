@@ -15,7 +15,7 @@ export default defineComponent({
     const route = useRoute()
     const storeUser: any = useStoreUser()
     const [tagList, categoriesList] = useDict(['TAGS', 'CATEGORIES'])
-    const resetRelatedDict = resetDict(['TAGS', 'CATEGORIES', 'STATISTICS'])
+    const resetRelatedDict = resetDict(['TAGS', 'CATEGORIES', 'STATISTICS', 'TAG_STATISTICS'])
     const state = reactive({
       article: {
         createTime: '',

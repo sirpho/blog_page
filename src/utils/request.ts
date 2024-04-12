@@ -94,7 +94,9 @@ instance.interceptors.request.use(
       config.baseURL = import.meta.env.VITE_BASE_URL
     }
 
-    (config).headers.token = user.token
+    if(user?.token) {
+      config.headers.token = user.token
+    }
 
     if (
       config.data &&

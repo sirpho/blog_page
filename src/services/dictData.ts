@@ -1,5 +1,5 @@
 // // 查询字典数据详细
-import { getStatistics, queryCategoryList, queryTagList } from "@/services/article";
+import { getStatistics, getTagStatistics, queryCategoryList, queryTagList } from "@/services/article";
 
 export function getDictOptions(dictCode: string) {
   return new Promise((resolve, reject) => {
@@ -30,13 +30,19 @@ export function getDictOptions(dictCode: string) {
         valueKey = 'category'
         operation = getStatistics
         break
+      // 标签云统计
+      case 'TAG_STATISTICS':
+        nameKey = 'NAME'
+        valueKey = 'NAME'
+        operation = getTagStatistics
+        break
     }
     if (!operation) {
       reject()
       return
     }
     operation(params)
-      .then((res) => {
+      .then((res: any) => {
         let result = res.data || []
         result = result?.list || result
         result = result.map((item: any) => ({
@@ -47,7 +53,7 @@ export function getDictOptions(dictCode: string) {
         }))
         resolve(result)
       })
-      .catch((error) => {
+      .catch((error: any) => {
         reject(error)
       })
   })
