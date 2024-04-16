@@ -63,7 +63,7 @@ const {routesBlackList} = config
 router.beforeEach(async (to, _, next) => {
   const userStore: any = useStoreUser()
   Message.clear();
-  const logged = !!userStore.user
+  const logged = !!userStore.user?.token
   if (logged) {
     if (to.path === '/login') {
       next({ path: '/', replace: true })

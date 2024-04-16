@@ -32,12 +32,22 @@ export default defineComponent({
     const goMarkdown = () => {
       router.push('/markdown')
     }
+
     /**
      * 跳转文件柜
      */
     const goFiles = () => {
       router.push('/files/list')
     }
+
+    /**
+     * 退出登录
+     */
+    const logout = () => {
+      removeStorage(`user`)
+      window.location.reload()
+    }
+
     /**
      * 相关文章列表
      */
@@ -70,6 +80,10 @@ export default defineComponent({
                   <li key='folder' class="nav-item" onClick={goFiles}>
                     <icon-font type="icon-folder" />
                     文件柜
+                  </li>,
+                  <li key='logout' class="nav-item" onClick={logout}>
+                    <icon-font type="icon-guanji" />
+                    退出
                   </li>
                 ] : (
                   <li class="nav-item" onClick={goLogin}>

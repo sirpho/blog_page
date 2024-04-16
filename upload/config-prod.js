@@ -3,7 +3,7 @@ let config = {
   username: 'root',
   port: '22',
   password: 'eHpoMXFhekBXU1g=',
-  path: '/var/www/html/10010',
-  rmpath: '/var/www/html/10010'
+  path: '/var/www/html/blog',
+  rmpath: '/var/www/html/blog'
 }
 module.exports = config;

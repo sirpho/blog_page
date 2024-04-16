@@ -29,12 +29,7 @@ export default defineComponent({
           setStorage({
             key: `user`,
             value: res.data,
-            expired: 60 * 1000 * 1000 * 3
-          })
-          setStorage({
-            key: `token`,
-            value: res.data.token,
-            expired: 60 * 1000 * 1000 * 3
+            expired: 60 * 1000 * 60 * 3
           })
           const {redirect} = route.query
           if(redirect) {
