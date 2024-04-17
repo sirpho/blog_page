@@ -121,7 +121,7 @@ export default defineComponent({
       previewVisible: false,
       // 上传请求附加的头信息
       headers: {
-        token: getStorage({key: `token`})
+        token: userStore.user?.token
       } as any,
       // 上传请求附加的数据
       data: {
