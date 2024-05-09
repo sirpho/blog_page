@@ -43,7 +43,7 @@ export function updateArticle(data: QueryParam): Promise<any> {
 export function removeArticle(data: QueryParam): Promise<any> {
   return request({
     url: `/article/remove/${data.id}`,
-    method: 'delete',
+    method: 'get',
   })
 }
 
