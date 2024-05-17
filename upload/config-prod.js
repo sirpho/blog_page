@@ -1,5 +1,5 @@
 let config = {
-  ip: '124.71.162.149',
+  ip: '45.147.51.78',
   username: 'root',
   port: '22',
   password: 'eHpoMXFhekBXU1g=',

@@ -91,7 +91,10 @@ export default defineComponent({
         return
       }
       state.submitLoading = true
-      const res = await updateArticle(state.article).finally(() => {
+      const res = await updateArticle({
+        ...state.article,
+        content: btoa(state.article.content)
+      }).finally(() => {
         state.submitLoading = false
       })
       if (res.code === 200) {
