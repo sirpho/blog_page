@@ -93,7 +93,7 @@ export default defineComponent({
       state.submitLoading = true
       const res = await updateArticle({
         ...state.article,
-        content: btoa(state.article.content)
+        content: btoa(encodeURIComponent(state.article.content))
       }).finally(() => {
         state.submitLoading = false
       })
