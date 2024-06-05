@@ -53,6 +53,7 @@ export default defineConfig({
   server: {
     open: true,
     host: true,
+    port: 10010
   },
   css: {
     modules: {

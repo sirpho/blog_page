@@ -1,26 +1,26 @@
 <template>
   <page-navbar />
   <div class="layout">
+    <aside class="left-bar">
+      <a-affix :offsetTop="75">
+        <div class="bar-content clear-float">
+          <page-info />
+          <category-navbar />
+        </div>
+      </a-affix>
+    </aside>
+    <div class="main-content">
     <router-view v-slot="{ Component }">
-      <aside class="left-bar">
-        <a-affix :offsetTop="75">
-          <div class="bar-content clear-float">
-            <page-info />
-            <category-navbar />
-          </div>
-        </a-affix>
-      </aside>
-      <div class="main-content">
         <component :is="Component" />
-      </div>
-      <aside class="right-bar">
-        <a-affix :offsetTop="75">
-          <div class="bar-content clear-float">
-            <tag-navbar />
-          </div>
-        </a-affix>
-      </aside>
     </router-view>
+    </div>
+    <aside class="right-bar">
+      <a-affix :offsetTop="75">
+        <div class="bar-content clear-float">
+          <tag-navbar />
+        </div>
+      </a-affix>
+    </aside>
   </div>
 </template>
 
@@ -36,35 +36,34 @@ import TagNavbar from "@/components/TagNavbar";
   max-width: var(--page-max-width);
   margin: var(--navbar-height) auto 0;
   padding-top: 25px;
+  display: flex;
+  gap: var(--common-space);
 
   .left-bar {
     display: flex;
     flex-direction: column;
     width: var(--left-bar-width);
-    float: left;
   }
 
   .main-content {
-    float: left;
-    width: calc(100% - var(--left-bar-width) - var(--right-bar-width) - var(--common-space) -
-    var(--common-space));
-    margin: 0 var(--common-space);
+    flex: 1;
+    margin: 0;
   }
 
   .right-bar {
     display: flex;
     flex-direction: column;
     width: var(--right-bar-width);
-    float: right;
   }
 
   @media (max-width: 940px) {
     .right-bar {
       display: none;
     }
-
-    .main-content {
-      width: calc(100% - var(--left-bar-width) - var(--common-space) - var(--common-space));
+  }
+  @media (max-width: 650px) {
+    .left-bar {
+      display: none;
     }
   }
 }
