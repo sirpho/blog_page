@@ -2,24 +2,9 @@
 个人博客前端页面
 ## Project Setup
 
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
+## 打包上传到服务器
+```bash
+pnpm build:prod
+D:
+scp "D:\document\sirpho\blog_page\dist\dist.zip" root@home.perflogs.top:/var/www/html/blog
 ```
