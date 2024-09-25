@@ -35,6 +35,10 @@ export default defineComponent({
     author: {
       type: String
     },
+    // 是否公开
+    publicity: {
+      type: String
+    },
     // 标签
     tags: {
       type: Array as PropType<string[]>,

@@ -21,7 +21,7 @@ export default defineComponent({
         createTime: '',
         lastUpdateTime: '',
         deleted: 'N',
-        published: 'Y',
+        publicity: 'Y',
         id: '',
         title: '',
         summary: '',
@@ -51,7 +51,7 @@ export default defineComponent({
             createTime: '',
             lastUpdateTime: '',
             deleted: 'N',
-            published: 'Y',
+            publicity: 'Y',
             id: '',
             title: '',
             summary: '',
@@ -170,6 +170,12 @@ export default defineComponent({
                   <a-radio value="原创">原创</a-radio>
                   <a-radio value="转载">转载</a-radio>
                   {/*<a-radio value="二创">二创</a-radio>*/}
+                </a-radio-group>
+              </a-form-item>
+              <a-form-item field="publicity" label="公开">
+                <a-radio-group v-model={state.article.publicity}>
+                  <a-radio value="Y">公开</a-radio>
+                  <a-radio value="N">非公开</a-radio>
                 </a-radio-group>
               </a-form-item>
               {state.article?.creationType !== '原创' && (

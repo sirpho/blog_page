@@ -22,7 +22,7 @@ declare interface articleType {
   createTime: string,
   lastUpdateTime: string,
   deleted: string,
-  published: string,
+  publicity: string,
   id: string,
   title: string,
   summary: string,

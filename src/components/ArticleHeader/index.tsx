@@ -1,10 +1,8 @@
-import type { PropType } from 'vue'
 import { Icon } from '@arco-design/web-vue'
 import { defineComponent } from 'vue'
 import './index.less'
 import dayjs from 'dayjs'
 import { useStoreUser } from "@/stores/modules/user";
-
 const IconFont = Icon.addFromIconFontCn({ src: 'iconfont.js' })
 
 export default defineComponent({
@@ -34,6 +32,10 @@ export default defineComponent({
     },
     // 作者
     author: {
+      type: String
+    },
+    // 是否公开
+    publicity: {
       type: String
     },
     // 展示编辑
@@ -74,6 +76,13 @@ export default defineComponent({
     return () => {
       return (
         <header class="post-header">
+          {
+            props.publicity === 'N' && (
+              <div class="onlyme">
+                <span class="text">仅我可见</span>
+              </div>
+            )
+          }
           <a class="post-title" onClick={handleClickArticle}>
             {props.title || '--'}
           </a>

@@ -15,7 +15,7 @@ export default defineComponent({
         createTime: '',
         lastUpdateTime: '',
         deleted: '',
-        published: '',
+        publicity: '',
         id: '',
         title: '',
         summary: '',
