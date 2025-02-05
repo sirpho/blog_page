@@ -1,6 +1,6 @@
 let config = {
-  ip: '45.147.51.78',
-  username: 'root',
+  ip: '115.159.152.232',
+  username: 'ubuntu',
   port: '22',
   password: 'eHpoMXFhekBXU1g=',
   path: '/var/www/html/blog',
