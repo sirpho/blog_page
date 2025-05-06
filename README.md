@@ -1,6 +1,6 @@
 # blog_page
 
-个人博客--前端
+# 博客--前端
 
 ### 依赖安装
 
@@ -20,19 +20,15 @@ pnpm run build
 pnpm build:prod
 ```
 
-# 脚本打包上传
-```
-pnpm upload-prod
-```
-
-# 手动打包上传
-## 1. 打包上传到服务器
+## 1. 打包dist目录并上传到服务器，上传完毕后删除dist目录
 
 ```bash
-D:
+
+tar -a -c -f D:\document\sirpho\blog_page\dist\dist.zip --exclude=dist.zip -C D:\document\sirpho\blog_page\dist .
 
 scp "D:\document\sirpho\blog_page\dist\dist.zip" root@www.sirpho.top:/var/www/html/blog
 
+Remove-Item -Path "D:\document\sirpho\blog_page\dist" -Recurse -Force
 
 ```
 
