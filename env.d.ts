@@ -32,6 +32,7 @@ declare interface articleType {
   creationType: string,
   source: string,
   category: string,
+  sticky: boolean,
   tags: string[],
 }
 

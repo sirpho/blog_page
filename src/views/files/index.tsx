@@ -34,6 +34,8 @@ export default defineComponent({
           title: '文件名',
           dataIndex: 'name',
           align: 'center',
+          width: 160,
+          minWidth: 160,
           render: ({ record }: TableRenderType) => {
             if (isImage(record)) {
               return (
@@ -125,7 +127,8 @@ export default defineComponent({
       } as any,
       // 上传请求附加的数据
       data: {
-        keepName: 'N'
+        keepName: 'N',
+        obs: 'N'
       } as any,
       uploadAction: `${import.meta.env.VITE_BASE_URL}file/upload`
     })
@@ -293,6 +296,22 @@ export default defineComponent({
           </div>
           {!!userStore.user?.token && (
             <div class="upload-wrapper">
+              <div class="checkbox-wrapper">
+                <a-switch
+                  type="round"
+                  v-model={state.data.obs}
+                  checked-value="N"
+                  unchecked-value="Y"
+                  v-slots={{
+                    checked: () => {
+                      return '同步上传到资源服务器'
+                    },
+                    unchecked: () => {
+                      return '不同步上传'
+                    }
+                  }}
+                ></a-switch>
+              </div>
               <a-upload
                 draggable
                 name="files"

@@ -18,7 +18,9 @@ import pageNavbar from '@/components/PageNavbar'
   max-width: var(--page-max-width);
   padding-top: 25px;
   margin: var(--navbar-height) auto 0;
-
+  position: relative;
+  z-index: 1;
+  
   .main-content {
     width: 100%;
   }

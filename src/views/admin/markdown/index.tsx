@@ -30,6 +30,7 @@ export default defineComponent({
         author: storeUser.user?.name,
         creationType: '原创',
         source: '',
+        sticky: false,
         tags: [],
         category: ''
       } as articleType,
@@ -61,6 +62,7 @@ export default defineComponent({
             creationType: '原创',
             source: '',
             category: '',
+            sticky: false,
             tags: [],
           }
         }
@@ -165,18 +167,16 @@ export default defineComponent({
               <a-form-item field="author" label="作者">
                 <a-input v-model={state.article.author} max-length={20} placeholder="作者" />
               </a-form-item>
-              <a-form-item field="creationType" label="创作类型">
+              <a-form-item label="" wrapper-col-props={{span: 24}}>
                 <a-radio-group v-model={state.article.creationType}>
                   <a-radio value="原创">原创</a-radio>
                   <a-radio value="转载">转载</a-radio>
-                  {/*<a-radio value="二创">二创</a-radio>*/}
                 </a-radio-group>
-              </a-form-item>
-              <a-form-item field="publicity" label="公开">
-                <a-radio-group v-model={state.article.publicity}>
-                  <a-radio value="Y">公开</a-radio>
-                  <a-radio value="N">非公开</a-radio>
-                </a-radio-group>
+                <a-divider direction={'vertical'} />
+                  <a-radio-group v-model={state.article.publicity}>
+                    <a-radio value="Y">公开</a-radio>
+                    <a-radio value="N">非公开</a-radio>
+                  </a-radio-group>
               </a-form-item>
               {state.article?.creationType !== '原创' && (
                 <a-form-item field="source" label="原文链接">
@@ -199,6 +199,9 @@ export default defineComponent({
                     <a-option value={item.name} key={item.value} label={item.name} />
                   ))}
                 </a-select>
+              </a-form-item>
+              <a-form-item field="sticky" label="">
+                <a-checkbox v-model={state.article.sticky}>置顶</a-checkbox>
               </a-form-item>
             </a-form>
 

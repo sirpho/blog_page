@@ -27,7 +27,8 @@ import {
   Switch,
   Affix,
   Table,
-  Skeleton
+  Skeleton,
+  Checkbox
 } from "@arco-design/web-vue";
 
 const app = createApp(App);
@@ -48,6 +49,7 @@ app.use(Form);
 app.use(Button);
 app.use(Select);
 app.use(Radio);
+app.use(Checkbox);
 app.use(Pagination);
 app.use(Upload);
 app.use(Popconfirm);
