@@ -38,6 +38,10 @@ export default defineComponent({
     publicity: {
       type: String
     },
+    // 是否置顶
+    sticky: {
+      type: Boolean
+    },
     // 展示编辑
     showEdit: {
       type: Boolean,
@@ -86,6 +90,13 @@ export default defineComponent({
           <a class="post-title" onClick={handleClickArticle}>
             {props.title || '--'}
           </a>
+          {
+            props.sticky && (
+              <div class="sticky">
+                <span class="text">置顶</span>
+              </div>
+            )
+          }
           <div class="post-meta">
             <div class="post-meta-item">
               <icon-font type="icon-shijian" />

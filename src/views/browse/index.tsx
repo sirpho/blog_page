@@ -24,6 +24,7 @@ export default defineComponent({
         author: '',
         creationType: '',
         source: '',
+        sticky: false,
         tags: [],
         category: ""
       } as articleType,

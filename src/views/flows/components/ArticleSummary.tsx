@@ -39,6 +39,10 @@ export default defineComponent({
     publicity: {
       type: String
     },
+    // 是否置顶
+    sticky: {
+      type: Boolean
+    },
     // 标签
     tags: {
       type: Array as PropType<string[]>,
