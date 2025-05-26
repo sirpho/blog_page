@@ -19,8 +19,8 @@ export function getStatistics(): Promise<any> {
  */
 export function getTagStatistics(): Promise<any> {
   return request({
-    url: `/tag/statistics`,
-    method: 'get',
+    url: `/tag/article/statistics`,
+    method: 'post',
   })
 }
 
@@ -54,18 +54,6 @@ export function removeArticle(data: QueryParam): Promise<any> {
 export function queryCategoryList(params?: QueryParam): Promise<any> {
   return request({
     url: '/enum/query/ARTICLE_CATEGORY',
-    method: 'get',
-    params: params || {}
-  })
-}
-
-/**
- * 标签列表
- * @param params
- */
-export function queryTagList(params?: QueryParam): Promise<any> {
-  return request({
-    url: '/tag/article/list',
     method: 'get',
     params: params || {}
   })

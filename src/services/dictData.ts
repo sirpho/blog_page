@@ -1,5 +1,5 @@
 // // 查询字典数据详细
-import { getStatistics, getTagStatistics, queryCategoryList, queryTagList } from "@/services/article";
+import { getStatistics, getTagStatistics, queryCategoryList } from "@/services/article";
 
 export function getDictOptions(dictCode: string) {
   return new Promise((resolve, reject) => {
@@ -12,12 +12,6 @@ export function getDictOptions(dictCode: string) {
       limit: undefined
     }
     switch (dictCode) {
-      // 标签列表
-      case 'TAGS':
-        nameKey = 'name'
-        valueKey = 'id'
-        operation = queryTagList
-        break
       // 分类列表
       case 'CATEGORIES':
         nameKey = 'name'
@@ -32,8 +26,8 @@ export function getDictOptions(dictCode: string) {
         break
       // 标签云统计
       case 'TAG_STATISTICS':
-        nameKey = 'NAME'
-        valueKey = 'NAME'
+        nameKey = 'name'
+        valueKey = 'name'
         operation = getTagStatistics
         break
     }

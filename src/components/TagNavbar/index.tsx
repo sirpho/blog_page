@@ -46,11 +46,11 @@ export default defineComponent({
       return (
         <a-card title="标签云" hoverable class="tag-navbar">
           <div class="content">
-            {tagList.value?.map((item: any, index: number) => (
+            {tagList.value?.map((item: any) => (
               <a-tag
                 class="tag-item"
                 color={colors[Math.floor(Math.random() * colors.length)]}
-                style={{ fontSize: `${Math.round(mapRange(item.count, 1, 5, 18, 28))}px` }}
+                style={{ fontSize: `${Math.round(mapRange(item.qty, 1, 5, 18, 28))}px` }}
                 key={item.id}
                 onClick={() => goTagArticleList(item)}
               >
