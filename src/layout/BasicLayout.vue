@@ -15,11 +15,9 @@
     </router-view>
     </div>
     <aside class="right-bar">
-      <a-affix :offsetTop="75">
-        <div class="bar-content clear-float">
-          <tag-navbar />
-        </div>
-      </a-affix>
+      <div class="bar-content clear-float">
+        <tag-navbar />
+      </div>
     </aside>
   </div>
 </template>
@@ -38,11 +36,13 @@ import TagNavbar from "@/components/TagNavbar";
   padding-top: 25px;
   display: flex;
   gap: var(--common-space);
+  z-index: 1;
 
   .left-bar {
     display: flex;
     flex-direction: column;
     width: var(--left-bar-width);
+    z-index: 2;
   }
 
   .main-content {
@@ -54,6 +54,24 @@ import TagNavbar from "@/components/TagNavbar";
     display: flex;
     flex-direction: column;
     width: var(--right-bar-width);
+    z-index: 2;
+    
+    .bar-content {
+      width: var(--right-bar-width);
+      position: fixed;
+      top: 75px;
+      
+      .tag-navbar {
+        max-height: calc(100vh - 90px);
+        display: flex;
+        flex-direction: column;
+        
+        :deep(.arco-card-body) {
+          flex: 1;
+          overflow: auto;
+        }
+      }
+    }
   }
 
   @media (max-width: 940px) {
