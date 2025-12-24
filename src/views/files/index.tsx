@@ -300,11 +300,11 @@ export default defineComponent({
                 <a-switch
                   type="round"
                   v-model={state.data.obs}
-                  checked-value="N"
-                  unchecked-value="Y"
+                  checked-value="Y"
+                  unchecked-value="N"
                   v-slots={{
                     checked: () => {
-                      return '同步上传到资源服务器'
+                      return '同步上传到obs'
                     },
                     unchecked: () => {
                       return '不同步上传'
